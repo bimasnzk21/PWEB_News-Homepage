@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | News homepage</title>
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif;
+}
+
+img {
+  max-width: 100%;
+  width: 100%;
+}
+
+ul {
+  list-style-type: none;
+}
+
+p {
+  line-height: 1.8;
+  color: hsl(236, 13%, 42%);
+}
+
+html {
+  font-size: 15px;
+}
+
+
+.header nav {
+  opacity: 0;
+  z-index: -999;
+  transition: all 0.3s ease-in-out;
+}
+
+.header nav.open {
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 75vw;
+  background-color: white;
+  padding: 1.25rem;
+  opacity: 1;
+  z-index: 99999999999;
+}
+
+.header nav ul {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.header nav ul li {
+  margin: 1.5rem 0;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header nav ul li:hover {
+  color: hsl(5, 100%, 51%);
+}
+
+
+
+
+.button1{
+  background-color: hsl(5, 85%, 63%);
+  color: #fff;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.button1:hover {
+  background-color: hsl(240, 100%, 5%);
+  cursor: pointer;
+}
+
+
+
+
+.beritakedua h3 {
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+.beritakedua h3:hover {
+  color: hsl(35, 77%, 62%);
+  cursor: pointer;
+}
+
+
+
+@media (min-width: 768px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 2rem;
+    position: relative;
+  }
+}
+
+@media (min-width: 1024px) {
+  .header {
+    padding: 2rem 1.25rem;
+  }
+
+  .header nav {
+    opacity: 1;
+    z-index: auto;
+    width: 100%;
+  }
+
+  .header nav.open {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: auto;
+    background-color: transparent;
+    padding: 0;
+    z-index: auto;
+  }
+
+  .header nav #menu-close {
+    display: none;
+  }
+
+  .header nav ul {
+    position: relative;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    transform: translateY(0%);
+  }
+
+  .header nav ul li {
+    margin: 0;
+  }
+
+  .header .tombolmenu button {
+    display: none;
+  }
+
+  .berita {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .berita h1 {
+    font-size: 3rem;
+  }
+
+  .beritautama article {
+    background-color: aliceblue;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    place-items: center;
+    margin-top: 2rem;
+  }
+
+  .beritakedua {
+    margin-top: 0;
+  }
+
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+      .attribution {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 2rem;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+  </head>
+  <body style="max-width: 1200px;margin: auto;padding-bottom: 4rem;">
+    <header class="header" style="display: flex;align-items: center;justify-content: space-between;
+    padding: 1.25rem;">
+      <div>
+        <img src="./assets/images/logo.svg" alt="" />
+      </div>
+
+      <nav>
+        <button id="menu-close" style="background: transparent;border: none;outline: none;
+        position: absolute;right: 1.25rem;top: 1.25rem;z-index: 99999;cursor: pointer;">
+          <img src="./assets/images/icon-menu-close.svg" alt="" />
+        </button>
+
+        <ul >
+          <li>Home</li>
+          <li>New</li>
+          <li>Popular</li>
+          <li>Trending</li>
+          <li>Categories</li>
+        </ul>
+      </nav>
+
+      <div class="tombolmenu" style="background: transparent;
+      outline: none;
+      border: none;
+      cursor: pointer;">
+        <button id="menu-button">
+          <img src="./assets/images/icon-menu.svg" alt="" />
+        </button>
+      </div>
+    </header>
+
+    <section class="berita" style="padding-top: 0;
+    padding: 1.25rem;">
+      <div class="beritautama" style="padding-top: 0;
+      ; margin-top: 2rem;">
+        <picture>
+          <!-- buat mengubah ukuran gambar ketika size berubah -->
+          <source
+          
+            media="(min-width: 768px)"
+            srcset="./assets/images/image-web-3-desktop.jpg"
+          />
+          <img src="./assets/images/image-web-3-mobile.jpg" alt="" />
+        </picture>
+        <div>
+          <article>
+            <h1 style="font-size: 3rem;
+  font-weight: 800;
+  color: hsl(240, 100%, 5%);
+  margin: 1rem 0;">The Bright Future of Web 3.0?</h1>
+  
+            <div>
+              <p style="margin-top: 1rem;
+              margin-bottom: 1rem;">
+                We dive into the next evolution of the web that claims to put the
+                power of the platforms back into the hands of the people. But is
+                it really fulfilling its promise?
+              </p>
+  
+              
+              <div >
+                <button class="button1" type="button" >
+                  Read More!
+                </button>
+              </div>
+            </div>
+        </div>
+        
+        </article>
+      </div>
+
+      <div class="beritakedua" style="background-color: hsl(240, 100%, 5%);
+      margin-top: 2rem;
+      padding: 1.25rem 1.25rem 0;">
+        <h2 style="color: hsl(35, 77%, 62%);">New</h2>
+
+        <article style="padding: 1.25rem 0;
+        border-bottom: 1px solid hsl(236, 13%, 42%);">
+          <h3>Hydrogen VS Electric Cars</h3>
+          <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+        </article>
+
+        <article style="padding: 1.25rem 0;
+        border-bottom: 1px solid hsl(236, 13%, 42%);">
+          <h3>The Downsides of AI Artistry</h3>
+          <p>
+            What are the possible adverse effects of on-demand AI image
+            generation?
+          </p>
+        </article>
+
+        <article style="padding: 1.25rem 0;
+        border-bottom: 1px solid hsl(236, 13%, 42%);">
+          <h3>Is VC Funding Drying Up?</h3>
+          <p>
+            Private funding by VC firms is down 50% YOY. We take a look at what
+            that means.
+          </p>
+        </article>
+      </div>
+    </section>
+
+  
+    <div class="cards" style="padding: 1.25rem; display:grid">
+      <div class="cards2"style="display: flex;margin: 1.25rem;">
+        <img src="./assets/images/image-retro-pcs.jpg" alt="" style="width: 150px; margin-right: 1.25rem;" />
+        <div class="tulisan"style="width: 250px;">
+          <span style="  color: hsl(236, 13%, 42%);font-weight: bold;font-size: 2rem;opacity: 75%;">01</span>
+          <h4 style="font-size: 1.25rem;color: hsl(240, 100%, 5%);margin: 1rem 0;font-weight: bold;">Reviving Retro PCs</h4>
+          <p>What happens when old PCs are given modern upgrades?</p>
+        </div>
+      </div>
+      <div class="cards2"style="display: flex;margin: 1.25rem;">
+        <img src="./assets/images/image-top-laptops.jpg" alt=""style="width: 150px;margin-right: 1.25rem;" />
+        <div class="tulisan"style="width: 250px;">
+          <span style="  color: hsl(236, 13%, 42%);font-weight: bold;font-size: 2rem;opacity: 75%;">02</span>
+          <h4 style="font-size: 1.25rem;color: hsl(240, 100%, 5%);margin: 1rem 0;font-weight: bold;">Top 10 Laptops of 2022</h4>
+          <p>Our best picks for various needs and budgets.</p>
+        </div>
+      </div>
+
+      <div class="cards2"style="display: flex;margin: 1.25rem;">
+        <img src="./assets/images/image-gaming-growth.jpg" alt="" style="width: 150px;margin-right: 1.25rem;"/>
+        <div class="tulisan"style="width: 250px;">
+          <span style="  color: hsl(236, 13%, 42%);font-weight: bold;font-size: 2rem;opacity: 75%;">03</span>
+          <h4 style="font-size: 1.25rem;color: hsl(240, 100%, 5%);margin: 1rem 0;font-weight: bold;">The Growth of Gaming</h4>
+          <p>How the pandemic has sparked fresh opportunities.</p>
+        </div>
+      </div>
+      
+    </div>
+
+    <div class="attribution">
+      Challenge by
+      Frontend Mentor. Oleh Hermawan,Bima,Naufal
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
